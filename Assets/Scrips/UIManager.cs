@@ -16,17 +16,20 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TMPro.TMP_Text coins;
 
-    [SerializeField]   Button salir;
-     [SerializeField]   Button retry;
-    
-    
+    [SerializeField] TMPro.TMP_Text fin;
+
+    [SerializeField] Button salir;
+    [SerializeField] Button retry;
+
+
     #endregion
 
 
- void Awake()
+    void Awake()
     {
-        if(UIManager.Instance == null){
-           UIManager.Instance = this.GetComponent<UIManager>();
+        if (UIManager.Instance == null)
+        {
+            UIManager.Instance = this.GetComponent<UIManager>();
         }
         else if (UIManager.Instance != null && UIManager.Instance != this)
         {
@@ -35,15 +38,15 @@ public class UIManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
     }
-   
-    
-    
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        fin.gameObject.SetActive(false);
         gameOVER.gameObject.SetActive(false);
-       // salir.gameObject.SetActive(false);
+        // salir.gameObject.SetActive(false);
         //retry.gameObject.SetActive(false);
 
     }
@@ -63,20 +66,28 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void updateLives(int lives){
+    public void updateLives(int lives)
+    {
 
         playerlives.text = " X " + lives;
 
     }
 
-  public void updatecoins(int coin){
+    public void updatecoins(int coin)
+    {
 
 
-      coins.text=" x " + coin; 
-       }
+        coins.text = " x " + coin;
+    }
+    public void NivelComplete(){
+
+           fin.gameObject.SetActive(true);
+            SceneManager.LoadScene("Main");
+
+    }
 }
 
 
 
 
-      
+

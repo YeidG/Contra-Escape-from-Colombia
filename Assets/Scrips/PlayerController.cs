@@ -149,6 +149,13 @@ public class PlayerController : MonoBehaviour
             isactive = true;
 
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("House"))
+        {
+            Manager.Instance.nextlevel();
+            isactive = true;
+
+        }
     }
 
     private void FixedUpdate()

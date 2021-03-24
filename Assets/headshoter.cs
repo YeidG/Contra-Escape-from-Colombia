@@ -12,7 +12,7 @@ public class headshoter : MonoBehaviour
     private BoxCollider2D BoxCollider2D;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    private int lives = 1;
+    private int lives = 2;
 
     private float lastshoot;
 
@@ -29,14 +29,14 @@ public class headshoter : MonoBehaviour
 
         if (direction.x >= 0.0f)
         {
-            Vx = 1;
+            //Vx = 1;
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
         }
 
         else if (direction.x <= 0.0f)
         {
-             Vx = -1;
+            // Vx = -1;
             transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         }
 
@@ -53,7 +53,7 @@ public class headshoter : MonoBehaviour
 
         float distance = Mathf.Abs(Player.transform.position.x - transform.position.x);
 
-        if (distance < 1 && Time.time > lastshoot + 1)
+        if (distance < 1 && Time.time > lastshoot + 2)
         {
             shoot();
             lastshoot = Time.time;
@@ -79,7 +79,7 @@ public class headshoter : MonoBehaviour
 
     public void hit()
     {
-        lives = lives - 2;
+        lives = lives - 1;
         if (lives <= 0)
         {
             Destroy(gameObject);
