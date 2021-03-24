@@ -61,10 +61,17 @@ public class Manager : MonoBehaviour
     {
 
         coinCount += a;
+        if(coinCount>=5){
+            livescount += 1 ;
+             UIManager.Instance.updateLives(livescount);
+            coinCount=0;
+          
+        }
 
     }
     public void updateLives(int lives)
     {
+
         livescount += lives;
         coinCount = 0;
 
@@ -81,6 +88,7 @@ public class Manager : MonoBehaviour
             // Time.timeScale=0;
         }
         else
+
         {
 
             SceneManager.LoadScene("Nivel-1");
